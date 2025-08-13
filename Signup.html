@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyChoize Sign Up</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="signup.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <img src="MyChoize.svg" alt="MyChoize Logo" class="logo" />
+      <img src="car2.webp" alt="Sign up visual" class="main-img" />
+    </div>
+    <div class="right-section" >
+      <form class="signup-form" data-aos="zoom-in-up"  data-aos-duration="3000">
+        <h2>Sign up</h2>
+        <p>If you dont have an account register<br>
+        You can <a href="login.html">Login here !</a></p>
+
+        <p id="errname"></p>
+        <input type="text" id="name" placeholder="Full Name" required>
+
+        <p id="errnum"></p>
+        <input type="text" id="num" placeholder="Enter the phone number" required>
+      
+        <p id="erremail"></p>
+        <input type="email" id="email" placeholder="Email Address" required>
+
+        <p id="errpass"></p>
+        <input type="pass" id="pass" placeholder="Password" required>
+
+        <p id="errcpass"></p>
+        <input type="cpass" id="cpass" placeholder="Confirm Password" required>
+
+        <input type="Submit" value="Submit" class="submit" onclick="return signup()">
+      </form>
+    </div>
+  </div>
+  <script src="signup.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init();
+</script>
+</body>
+</html>
