@@ -2,25 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="wi data-aos-duration="3000"dth=device-width, initial-scale=1.0" />
   <title>MyChoize - Self Drive Cars</title>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <link rel="stylesheet" href="1_style.css" />
 </head>
 <body>
   <header class="navbar">
-    <img src="MyChoize.svg" alt="MyChoize Logo" class="logo" height="150px" width="150px"/>
-    <nav>
-      <a href="#">Deals</a>
+    <img src="MyChoize.svg" alt="MyChoize Logo" class="logo" height="150px" width="150px" data-aos="fade-down" data-aos-duration="3000"/>
+    <nav data-aos="zoom-in"  data-aos-duration="3000">
+      <a href="#" >Deals</a>
       <a href="#">Fleets</a>
-      <a href="#">About Us</a>
+      <a href="#" >About Us</a>
       <a href="#">Contact Us</a>
-      <a href="#">FAQ s</a>
+      <a href="#" >FAQ s</a>
     </nav>
-    <a href="Signup.html"  class="login-btn">Login or Signup</a>
+    <a href="Signup.html"  class="login-btn" data-aos="fade-down" data-aos-duration="3000">Login or Signup</a>
   </header>
 
-  <section class="booking-box">
-    <div class="tabs">
+  <section class="booking-box" data-aos="flip-up" data-aos-duration="3000">
+    <div class="tabs" >
       <button class="tab active">Daily Rentals</button>
       <button class="tab">Monthly Subscription</button>
     </div>
@@ -42,7 +47,7 @@
     <p class="duration">Duration: 3 Days and 9 hours</p>
   </section>
 
-  <section class="hero">
+  <section class="hero" data-aos="flip-up" data-aos-duration="3000">
     <div class="slide">
       <img src="dil.jpg" alt="Banner 2" />
       <div class="text-box">
@@ -51,5 +56,92 @@
       </div>
     </div>
   </section>
+
+ <!-- Swiper -->
+  <div class="swiper mySwiper" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="3000">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="Hyundai_Creta.jpg" />
+        <div class="info">
+          <div class="brand">🚗 Hyundai</div>
+          <div class="model">Creta</div>
+          <a href="book.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="Mahindra_Scorpio.jpg" />
+        <div class="info">
+          <div class="brand">🚗 Mahindra</div>
+          <div class="model">Scorpio</div>
+          <a href="book1.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="Mahindra.jpg" />
+          <div class="info">
+          <div class="brand">🚗 Mahindra</div>
+          <div class="model">TUV 300</div>
+          <a href="book2.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="Maruti_Ciaz.jpg" />
+          <div class="info">
+          <div class="brand">🚗 Maruti</div>
+          <div class="model">Ciaz</div>
+          <a href="book3.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="Toyota_Innova_Crysta.jpg" />
+          <div class="info">
+          <div class="brand">🚗 Toyota</div>
+          <div class="model">Innova Crysta</div>
+          <a href="book4.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="car1.webp" />
+          <div class="info">
+          <div class="brand">🚗 Mahindra</div>
+          <div class="model">TUV 300</div>
+          <a href="book.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="car2.webp" />
+          <div class="info">
+          <div class="brand">🚗 Mahindra</div>
+          <div class="model">TUV 300</div>
+          <a href="book.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="car3.webp" />
+          <div class="info">
+          <div class="brand">🚗 Mahindra</div>
+          <div class="model">TUV 300</div>
+          <a href="book.html" class="details">View Details →</a>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="car4.avif" />
+          <div class="info">
+          <div class="brand">🚗 Mahindra</div>
+          <div class="model">TUV 300</div>
+          <a href="book.html" class="details">View Details →</a>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="home.js"></script>
 </body>
 </html>

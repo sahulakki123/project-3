@@ -4,16 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MyChoize sign in</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="Login.css" />
 </head>
 <body>
   <div class="container">
     <div class="left-section">
-      <img src="MyChoize.svg" alt="MyChoize Logo" class="logo" />
+      <img src="MyChoize.svg" alt="MyChoize Logo" class="logo" data-aos="fade-down" data-aos-duration="3000" />
       <img src="pexels.jpg" alt="Sign up visual" class="main-img" />
     </div>
     <div class="right-section">
-      <form class="signup-form">
+      <form class="signup-form" data-aos="fade-down" data-aos-duration="3000">
         <h2>Sign in</h2>
         <p>If you dont have an account register<br>
         You can <a href="Signup.html">Register here !</a></p>
@@ -24,10 +25,14 @@
         <p id="errpass"></p>
         <input type="pass" id="pass" placeholder="Password" required>
 
-        <input type="Submit" value="Submit" class="submit" onclick="return signup()">
+        <input type="Submit" value="Submit" class="submit" onclick="return signup()" data-aos="zoom-in-up"  data-aos-duration="3000">
       </form>
     </div>
   </div>
   <script src="signup.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init();
+</script>
 </body>
 </html>
