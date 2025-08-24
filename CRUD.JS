@@ -10,11 +10,11 @@ let fetchdata = async () => {
         tbody.innerHTML += `
             <tr>
                 <td>${e.carname}</td>
-                <td>${e.PickUpDate}</td>
-                <td>${e.ReturnDate}</td>                
+                <td>${e.pickUpDate}</td>
+                <td>${e.returnDate}</td>                
                 <td>${e.time}</td>                
-                <td>${e.TotalAmount}</td>
-                <td>${e.Location}</td>                
+                <td>${e.amount}</td>
+                <td>${e.symptoms}</td>                
                 <td style="color:red;cursor:pointer;" onclick="delet('${e.id}')">Delete</td>
                 <td style="color:blue;cursor:pointer;" onclick="formopen('${e.id}')">Edit</td>
             </tr>
@@ -32,11 +32,11 @@ let delet = async (id) => {
 let book = async () => {
     
     let Carname = document.querySelector("#Car_name").value.trim();
-    let pickUpDate = document.querySelector("#update").value.trim();
+    let PickUpDate = document.querySelector("#update").value.trim();
     let ReturnDate = document.querySelector("#indatae").value.trim();
-    let time = document.querySelector("#time").value.trim();
-    let amount = document.querySelector("#Amount").value.trim();
-    let Location = document.querySelector("#symptoms").value.trim();
+    let Time = document.querySelector("#time").value.trim();
+    let Amount = document.querySelector("#Amount").value.trim();
+    let Symptoms = document.querySelector("#symptoms").value.trim();
     console.log(Carname)
     
     let url = 'http://localhost:3000/carrental';
@@ -46,54 +46,72 @@ let book = async () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             carname: Carname,
-            pickUpDate: Ages,
-            ReturnDate: Contact,
-            gender: Gender,
+            pickUpDate:PickUpDate,
+            returnDate:ReturnDate,
             time: Time,
-            symptoms: symptoms,
-            fee:200
+            symptoms: Symptoms,
+            amount: Amount,
         })
     });
 
-    location.href = 'CRUD.html';
+    location.href = 'crud.html';
     return false;
 };
 
 
 let formopen = async (id) => {
-    let url = http://localhost:3000/appointment/${id};
+    let url = `http://localhost:3000/carrental/${id}`;
     let res = await fetch(url);
     let data = await res.json();
 
     document.querySelector('#formshow').innerHTML = `
     <div class="form-container">
-      <h2>Edit Appointment</h2>
+      <h2>Edit Booking summary</h2>
      <form onsubmit="return finalup(event, '${data.id}')">
+     <label>Car name</label>
+     
+     <select  required>
+       <option id="car" >-- Car_name --</option>    
+      <option  ${data.carname === 'Hyundai_Creta' ? 'selected' : ''}>Hyundai_Creta</option>
+      <option  ${data.carname === 'Mahindra_Scorpio' ? 'selected' : ''}>Mahindra_Scorpio</option>
+      <option  ${data.carname === 'Mahindra TUV 300' ? 'selected' : ''}>Mahindra TUV 300</option>
+      <option ${data.carname === 'Maruti_Ciaz' ? 'selected' : ''} >Maruti_Ciaz</option>
+      <option ${data.carname === 'Toyota_Innova_Crysta' ? 'selected' : ''} >Toyota_Innova_Crysta</option>
+      <option ${data.carname === 'car1' ? 'selected' : ''} >car1</option>
+      <option ${data.carname === 'Hyundai_Creta' ? 'selected' : ''} >Hyundai_Creta</option>
+     </select>
 
-        <label>Name</label>
-        <input type="text" id="upname" value="${data.name}" required>
+        <label>Pick-Up Date</label>
+        <input type="text" id="indate" value="${data.pickUpDate}" required>
 
-        <label>Age</label>
-        <input type="number" id="upage" value="${data.age}" required>
-
-        <label>Gender</label>
-        <select id="upgender" required>
-          <option value="">-- Select Gender --</option>
-          <option value="Male" ${data.gender === 'Male' ? 'selected' : ''}>Male</option>
-          <option value="Female" ${data.gender === 'Female' ? 'selected' : ''}>Female</option>
-          <option value="Other" ${data.gender === 'Other' ? 'selected' : ''}>Other</option>
-        </select>
-
-        <label>Contact</label>
-        <input type="tel" id="upcontact" value="${data.contact}" required>
+        <label>Pick-Up Date</label>
+        <input id="update" type="datetime-local"value="${data.returnDate}" value="2025-08-07T09:30" />
 
         <label>Preferred Time</label>
-        <input type="time" id="uptime" value="${data.time}" required>
+           <select id="time" required>
+                <option value="">-- Select --</option>
+                <option value="10:00 AM" ${data.time === '10:00 AM' ? 'selected' : ''}>10:00 AM</option>
+                <option value="12:00 PM"  ${data.time === '12:00 PM' ? 'selected' : ''}>12:00 PM</option>
+                <option value="2:00 PM"  ${data.time === '2:00 PM' ? 'selected' : ''}>2:00 PM</option>
+                <option value="4:00 PM"  ${data.time === '4:00 PM' ? 'selected' : ''}>4:00 PM</option>
+            </select>
+
+
+
+                <label >Amount</label>
+                <select id="Am" required>
+                <option>-- Select --</option>
+                    <option ${data.amount === '5000' ? 'selected' : ''} >5000</option>
+                    <option ${data.amount === '10000' ? 'selected' : ''} >10000</option>
+                    <option ${data.amount === '15000' ? 'selected' : ''} >15000</option>
+                    <option ${data.amount === '20000' ? 'selected' : ''} >20000</option>
+                </select>
+
 
         <label>Address</label>
-        <textarea id="upsymptoms" rows="3" required>${data.symptoms}</textarea>
+        <textarea id="dd" rows="3" required>${data.symptoms}</textarea>
 
-        <button type="submit">Update</button>
+        <button type="submit" >Book Now</button>
       </form>
     </div>
     `;
@@ -101,26 +119,26 @@ let formopen = async (id) => {
 
 
 let finalup = async (event, id) => {
-    event.preventDefault(); // prevent form refresh
+    event.preventDefault();
 
-    let upName = document.querySelector("#upname").value.trim();
-    let upage = document.querySelector("#upage").value.trim();
-    let upcontact = document.querySelector("#upcontact").value.trim();
-    let upgender = document.querySelector("#upgender").value.trim();
-    let uptime = document.querySelector("#uptime").value.trim();
-    let upsymptoms = document.querySelector("#upsymptoms").value.trim();
+    let carpName = document.querySelector("#car").value.trim();
+    let indate = document.querySelector("#indate").value.trim();
+    let update = document.querySelector("#update").value.trim();
+    let time = document.querySelector("#time").value.trim();
+    let Am = document.querySelector("#Am").value.trim();
+    let dd = document.querySelector("#dd").value.trim();
 
-    let url = http://localhost:3000/appointment/${id};
+    let url = `http://localhost:3000/carrental/${id}`;
     await fetch(url, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            name: upName,
-            age: upage,
-            contact: upcontact,
-            gender: upgender,
-            time: uptime,
-            symptoms: upsymptoms
+            carname: carpName,
+            pickUpDate: indate,
+            returnDate: update,
+            time: time,
+            symptoms: Am,
+            amount: dd
         })
     });
 
